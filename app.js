@@ -42,13 +42,15 @@ function renderButtons() {
   function displayGiphyInfo() {
     var giphy = $(this).attr("data-name");
     var queryURL = "https://www.omdbapi.com/?t=" + giphy + "&y=&plot=short&apikey=trilogy";
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + giphy + "&limit=10&api_key=wslWpWhssAgYDK6zVXacBDsacT47flr4"
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + giphy + "&limit=2&api_key=wslWpWhssAgYDK6zVXacBDsacT47flr4"
     $.ajax({
       url: queryURL,
       method: "GET"
     }).then(function(response) {
       console.log(queryURL);
-      console.log(JSON.stringify(response))
+      //console.log(JSON.stringify(response))
+      console.log(response.data[0].images.original.url);
+      console.log(response.data[1].images.original.url);
       $("#movies-view").text(JSON.stringify(response));
     });
   }
