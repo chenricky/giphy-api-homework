@@ -83,7 +83,7 @@ function renderButtons() {
       alert("saved to favorite");
       favGif.push(clickImageURL);
       console.log(favGif);
-      $("#favCount").text("you have  saved" + favGif.length +" favorite");
+      $("#favCount").text("you have  saved " + favGif.length +" favorite");
     }
     else {
       alert("Not save to favorite");
