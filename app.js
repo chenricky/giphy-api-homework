@@ -51,9 +51,16 @@ function renderButtons() {
         for (var limit = 0; limit < 10; limit++){
       //console.log(queryURL);
       //console.log(JSON.stringify(response))
-      console.log(response.data[limit].images.original.url);
+      //console.log(response.data[limit].images.original.url);
+      //$("#movies-view").text(JSON.stringify(response));
+      var image = $("<img>").attr("src", response.data[limit].images.original.url);
+      //console.log(image);
+      $("#movies-view").prepend(image);
+      //var movieDiv = $("div class='movie'>");
+      //movieDiv.append(image);
+      //$("#movies-view").prepend(movieDiv);
       }
-      $("#movies-view").text(JSON.stringify(response));
+      //$("#movies-view").text(JSON.stringify(response));
     });
   }
 
