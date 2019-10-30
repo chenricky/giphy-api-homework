@@ -1,5 +1,15 @@
 // the following codes define preset buttons
 var giphyPresetButtonsArray = ["batman","tomorrow","unicorn","maps","noodles"];
+var favGif = [];
+
+
+function displayFavGif() {
+  $("#movies-view").empty();
+  for (var i=0; i<favGif.length; i++) {
+    var FavImage = $("<img>").attr("src", favGif[i]);
+    $("#movies-view").prepend(FavImage);
+  }
+}
 
 //the following codes define a fucntion which will take the input from button array and create buttons, each 
 // each button will have a class and an attribute
@@ -54,6 +64,8 @@ function renderButtons() {
       //console.log(response.data[limit].images.original.url);
       //$("#movies-view").text(JSON.stringify(response));
       var image = $("<img>").attr("src", response.data[limit].images.original.url);
+      image.addClass("gifImage");
+      image.attr("thisImageURL", response.data[limit].images.original.url);
       //console.log(image);
       $("#movies-view").prepend(image);
       //var movieDiv = $("div class='movie'>");
@@ -64,7 +76,24 @@ function renderButtons() {
     });
   }
 
+  function alertImage() {
+    var clickImageURL = $(this).attr('src');
+    //alert("this is an image with URL: " + clickImageURL);
+    if (confirm("Save this image to favorite?")) {
+      alert("saved to favorite");
+      favGif.push(clickImageURL);
+      console.log(favGif);
+      $("#favCount").text("you have  saved" + favGif.length +" favorite");
+    }
+    else {
+      alert("Not save to favorite");
+    }
+    }
+  
+
   $(document).on("click", ".giphy", displayGiphyInfo);
+  $(document).on("click", ".gifImage", alertImage);
+  $(document).on("click", ".FavButtonClass", displayFavGif);
 
 
  
