@@ -26,6 +26,11 @@ function renderButtons() {
       myButton.addClass("giphy");
       // Adding a data-attribute
       myButton.attr("data-name", giphyPresetButtonsArray[i]);
+
+      //styling
+      //myButton.attr("type", "button");
+     // myButton.addClass("btn btn-outline-success");
+
       // Providing the initial button text
       myButton.text(giphyPresetButtonsArray[i]);
       // Adding the button to the buttons-view div
