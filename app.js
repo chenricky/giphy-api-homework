@@ -1,7 +1,9 @@
 // the following codes define preset buttons
 var giphyPresetButtonsArray = ["batman","tomorrow","unicorn","maps","noodles"];
+// the following codes define saved fav gif
 var favGif = [];
 
+// the following codes display all saved gif from fav array
 
 function displayFavGif() {
   $("#movies-view").empty();
@@ -64,30 +66,28 @@ function renderButtons() {
       method: "GET"
     }).then(function(response) {
         for (var limit = 0; limit < 10; limit++){
-      //console.log(queryURL);
-      //console.log(JSON.stringify(response))
-      //console.log(response.data[limit].images.original.url);
-      //$("#movies-view").text(JSON.stringify(response));
+      // create a var to hold an image
       var image = $("<img>").attr("src", response.data[limit].images.original.url);
+      //add a class to each gif
       image.addClass("gifImage");
+      //add a attribute to each gif
       image.attr("thisImageURL", response.data[limit].images.original.url);
-      //console.log(image);
+      //display the image to a DOM location
       $("#movies-view").prepend(image);
-      //var movieDiv = $("div class='movie'>");
-      //movieDiv.append(image);
-      //$("#movies-view").prepend(movieDiv);
       }
-      //$("#movies-view").text(JSON.stringify(response));
     });
   }
 
   function alertImage() {
+    //the following line fo code take teh src attribute(which is the url) from a clicked image then assign to clickImageURL
     var clickImageURL = $(this).attr('src');
-    //alert("this is an image with URL: " + clickImageURL);
+
     if (confirm("Save this image to favorite?")) {
       alert("saved to favorite");
+    //write the URL of the clicked image to the fav array  
       favGif.push(clickImageURL);
       console.log(favGif);
+    //write how many images saved to fav array to a DOM location favCount
       $("#favCount").text("you have  saved " + favGif.length +" favorite");
     }
     else {
@@ -95,7 +95,7 @@ function renderButtons() {
     }
     }
   
-
+  //when an event of click on any giphy class element happen on the document(browser), run the displayGiphyInfo function
   $(document).on("click", ".giphy", displayGiphyInfo);
   $(document).on("click", ".gifImage", alertImage);
   $(document).on("click", ".FavButtonClass", displayFavGif);
