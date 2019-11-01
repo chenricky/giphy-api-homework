@@ -1,5 +1,5 @@
 // the following codes define preset buttons
-var giphyPresetButtonsArray = ["batman","tomorrow","unicorn","maps","noodles"];
+var giphyPresetButtonsArray = ["batman","tomorrow","unicorn","maps","noodles","happy birthday","i will be back","time travel","game of throne"];
 // the following codes define saved fav gif
 var favGif = [];
 
